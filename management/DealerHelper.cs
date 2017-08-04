@@ -50,25 +50,22 @@ namespace management
                 MailMessage message = new MailMessage();
                 message.To.Add(emailId);
                 message.From = new MailAddress("vimalkrashna17@gmail.com");
-                message.Subject = "Invoice";
-                message.Priority = MailPriority.High;
-                message.Body = "This is your verification link";
-                System.Net.Mail.Attachment attachment;
-                attachment = new System.Net.Mail.Attachment(path);
-                message.Attachments.Add(attachment);
+                message.Subject = "Clearification";
+                message.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
                 smtp.UseDefaultCredentials = true;
                 smtp.Host = "smtp.gmail.com";
                 smtp.Port = 587;
                 smtp.EnableSsl = true;
+                
                 System.Net.NetworkCredential credentials = new System.Net.NetworkCredential();
                 credentials.UserName = "vimalkrashna17@gmail.com";
                 credentials.Password = "17@Vimal";
                 smtp.Credentials = credentials;
                 smtp.Port = 587;
                 smtp.Send(message);
-
                 return true;
+                
             }
             catch (Exception ex)
             {
